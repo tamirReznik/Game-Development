@@ -5,18 +5,18 @@ using UnityEngine;
 public class DoorMotion : MonoBehaviour
 {
     private Animator anim;
-    private AudioSource doorOpenSound, doorCloseSound;
+    private AudioSource doorOpenSound;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         doorOpenSound = GetComponent<AudioSource>();
-        doorCloseSound = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter(Collider other)
     {
         anim.SetBool("openDoor", true);
-        doorOpenSound.Play();
+        if (!doorOpenSound.isPlaying)
+            doorOpenSound.Play();
     }
     private void OnTriggerExit(Collider other)
     {
