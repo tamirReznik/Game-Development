@@ -20,10 +20,16 @@ public class RebeccaBehavior : MonoBehaviour
     void Update()
     {
 
-        agent.SetDestination(target.transform.position);
+        if (Mathf.Abs(target.transform.position.x - agent.transform.position.x) > 3
+            || Mathf.Abs(target.transform.position.z - agent.transform.position.z) > 3)
+        {
+            agent.SetDestination(target.transform.position);
+            Debug.Log("check dist");
+            Debug.Log(target.transform.position.sqrMagnitude);
+            anim.SetBool("isWalking", true);
+        }
 
-        anim.SetBool("isWalking", true);
-        anim.SetBool("isIdle", false);
+
 
         // Check if we've reached the destination
         // if (!agent.pathPending)
@@ -34,9 +40,8 @@ public class RebeccaBehavior : MonoBehaviour
                  anim.SetBool("isIdle", true);*/
                 if (agent.velocity.sqrMagnitude == 0f)
                 {  // Done
-                   //  Debug.Log("<color=red>Error: </color>AssetBundle not found");
+
                     anim.SetBool("isWalking", false);
-                    anim.SetBool("isIdle", true);
 
                 }
 
