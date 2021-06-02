@@ -23,18 +23,22 @@ public class RebeccaBehavior : MonoBehaviour
         if (Mathf.Abs(target.transform.position.x - agent.transform.position.x) > 3
             || Mathf.Abs(target.transform.position.z - agent.transform.position.z) > 3)
         {
-            agent.SetDestination(target.transform.position);
-            Debug.Log("check dist");
-            Debug.Log(target.transform.position.sqrMagnitude);
-            anim.SetBool("isWalking", true);
+            if (agent.enabled)
+            {
+
+                agent.SetDestination(target.transform.position);
+
+                anim.SetBool("isWalking", true);
+            }
         }
 
 
 
         // Check if we've reached the destination
         // if (!agent.pathPending)
+
         {
-            //  if (agent.remainingDistance <= agent.stoppingDistance)
+            if (agent.remainingDistance - 1 <= agent.stoppingDistance)
             {
                 /*   anim.SetBool("isWalking", false);
                  anim.SetBool("isIdle", true);*/
