@@ -1,3 +1,3 @@
 # Game-Development
 Game Development project
-![](apartment.gif)
+![](Apartment.gif)
